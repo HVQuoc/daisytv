@@ -15,6 +15,11 @@ export const mobileNavigation = [
     icon: <MdHomeFilled />,
   },
   ...navigation,
+  {
+    label: "Search",
+    href: "/search",
+    icon: <IoSearchOutline />,
+  },
 ];
 const Header = () => {  
   const [searchInput, setSearchInput] = useState("");
@@ -50,20 +55,20 @@ const Header = () => {
         </nav>
 
         {/* Search div */}
-        <form
+        <form 
           className="hidden lg:flex border border-gray-500 items-center mx-auto px-2 rounded-lg"
           onSubmit={handleSubmit}
         >
           <input
             type="text"
             placeholder="Search movies, TV shows..."
-            className="bg-transparent px-2 py-1 border-none rounded-lg text-white focus:outline-none"
+            className="w-full bg-transparent px-2 py-1 border-none rounded-lg text-white focus:outline-none"
             onChange={(e) => setSearchInput(e.target.value)}
             value={searchInput}
           />
           <button
             type="submit"
-            className="bg-transparent text-2xl active:scale-95"
+            className="bg-transparent text-2xl active:scale-95 cursor-pointer"
           >
             <IoSearchOutline className="text-white" />
           </button>
