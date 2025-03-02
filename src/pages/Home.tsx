@@ -1,8 +1,10 @@
+import HomeBanner from "../components/HomeBanner"
 
 const Home = () => {
+  console.log("Home page", window.innerWidth)
   return (
     <div>
-      This is the Home page
+      <HomeBanner />
     </div>
   )
 }

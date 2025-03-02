@@ -4,11 +4,9 @@ import Footer from "../components/Footer";
 import MobileNavigation from "../components/MobileNavigation";
 const MainLayout = () => {
   return (
-    <main >
+    <main>
       <Header />
-      <div className="pt-16 px-4 mx-auto">
-        <Outlet />
-      </div>
+      <Outlet />
       <Footer />
       <MobileNavigation />
     </main>

@@ -33,8 +33,8 @@ const Header = () => {
   };
  
   return (
-    <header className="sticky py-2 w-full h-16 bg-neutral-600 text-neutral-200 opacity-75">
-      <div className="container px-4 mx-auto flex items-center h-full">
+    <header className="fixed py-2 w-full h-16 bg-gray-600 text-neutral-200 opacity-65 z-10">
+      <div className="container mx-auto px-4 flex items-center h-full w-full">
         {/* Logo */}
         <Link to="/">
           <span className="text-4xl text-orange-600 font-bold">D</span>
@@ -56,7 +56,7 @@ const Header = () => {
 
         {/* Search div */}
         <form 
-          className="hidden lg:flex border border-gray-500 items-center mx-auto px-2 rounded-lg"
+          className="hidden lg:flex border w-md border-gray-500  items-center mx-auto px-2 rounded-lg"
           onSubmit={handleSubmit}
         >
           <input
@@ -75,7 +75,7 @@ const Header = () => {
         </form>
 
         {/* User div */}
-        <div className="ml-auto flex">
+        <div className="ml-auto flex mr-4">
           <div className="bg-gray-400 p-1 rounded-full text-white cursor-pointer active:scale-95 transition-all">
             <IoPersonOutline className="text-xl" />
           </div>
