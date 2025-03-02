@@ -16,8 +16,8 @@ function App() {
   useEffect(() => {
     // fetch data from the API and display it in the app
     const fetchTrendingMovies = async () => {
-      const response = await apiClient.get("/movie/popular");
-      // console.log(response.data);
+      const response = await apiClient.get("/trending/movie/week");
+      console.log(response.data);
       dispatch(setBannerData(response.data.results));
     };
     fetchTrendingMovies();

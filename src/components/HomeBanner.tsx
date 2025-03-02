@@ -10,6 +10,7 @@ const HomeBanner = () => {
     console.log("next movie", currentMovie);
     setCurrentMovie((prev) => (prev === bannerData.length - 1 ? 0 : prev + 1));
   };
+
   const handlePrevMovie = () => {
     console.log("prev movie");
     setCurrentMovie((prev) => (prev === 0 ? bannerData.length - 1 : prev - 1));
@@ -24,11 +25,11 @@ const HomeBanner = () => {
   //   console.log("homebanner", bannerData);
   return (
     <section className="w-full h-full">
-      <div className="flex min-h-full h-[96vh] overflow-hidden">
+      <div className="flex min-h-full h-[100vh] overflow-hidden">
         {bannerData.map((movie: any) => (
           <div
             className="min-w-full relative group transition-all duration-500 ease-out"
-            key={movie.id}
+            key={movie.id + "banner"}
             style={{
               transform: `translateX(-${currentMovie * 100}%)`,
             }}
@@ -67,7 +68,7 @@ const HomeBanner = () => {
                 <h2 className="text-4xl py-2">{movie?.title || movie?.name}</h2>
                 <p className="text-lg my-2">{movie.overview}</p>
                 <div className="flex items-center gap-2 my-2">
-                  <p>Score: {Number(movie.vote_average).toFixed(0)}</p>
+                  <p>Score: {Number(movie.vote_average).toFixed(2)}</p>
                   <span>|</span>
                   <p>View: {Number(movie.popularity).toFixed(0)}</p>
                 </div>
