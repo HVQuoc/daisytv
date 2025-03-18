@@ -31,7 +31,7 @@ const Home = () => {
       {/* Movies carousels */}
       {/* <hr className="text-gray-300" /> */}
       <div>
-        <h2 className="bg-gradient-to-b from-gray-500 to-transparent h-28 p-4 flex items-center justify-center text-4xl font-bold">
+        <h2 id="moviecollections" className="scroll-mt-18 bg-gradient-to-b from-gray-500 to-transparent h-20 p-4 flex items-center justify-center text-4xl font-bold">
           Movie Collections
         </h2>
         <HorizontalCardScroller listData={bannerData} heading={"Trending"} />
@@ -44,14 +44,14 @@ const Home = () => {
           listData={topRatedMovies}
           heading={"Top Rated"}
         />
-        <div className="mt-2 bg-gradient-to-t from-gray-500 to-transparent h-28 p-4"></div>
+        <div className="mt-2 bg-gradient-to-t from-gray-500 to-transparent h-20 p-4"></div>
         {/* <hr className="text-gray-300" /> */}
       </div>
 
       {/* TVs carousels */}
       <div>
         {/* <hr className="text-gray-300" /> */}
-        <h2 className="bg-gradient-to-b from-gray-500 to-transparent h-28 p-4 flex items-center justify-center text-4xl font-bold">
+        <h2 id="exploretvshows" className="scroll-mt-18 bg-gradient-to-b from-gray-500 to-transparent h-20 p-4 flex items-center justify-center text-4xl font-bold">
           Explore TV Shows
         </h2>
         <HorizontalCardScroller
@@ -60,7 +60,7 @@ const Home = () => {
         />
         <HorizontalCardScroller listData={popularTVs} heading={"Popular"} />
         <HorizontalCardScroller listData={topRatedTVs} heading={"Top Rated"} />
-        <div className="mt-2 bg-gradient-to-t from-gray-500 to-transparent h-28 p-4"></div>
+        <div className="mt-2 bg-gradient-to-t from-gray-500 to-transparent h-20 p-4"></div>
         <hr className="text-gray-300" />
       </div>
     </div>

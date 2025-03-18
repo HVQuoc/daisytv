@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const MobileNavigation = () => {
   return (
-    <section className="fixed text-neutral-300 bottom-0 p-2 lg:hidden flex justify-around gap-2 h-14 w-full bg-neutral-600 flextext-neutral-200 opacity-75">
+    <section className="fixed text-neutral-300 bottom-0 p-2 lg:hidden flex justify-around gap-2 h-14 w-full bg-gradient-to-t from-black to-transparent flextext-neutral-200 opacity-75">
       {mobileNavigation.map((item) => (
         <NavLink
           to={item.href}

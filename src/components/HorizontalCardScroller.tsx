@@ -36,7 +36,7 @@ const HorizontalCardScroller = ({
       <div className="relative group shadow-xl">
         <div
           ref={scrollRef}
-          className="carousel-container grid pb-2 grid-cols-[repeat(auto-fit,230px)] grid-flow-col gap-4 overflow-x-auto transition-all scroll-smooth"
+          className="carousel-container grid py-2 grid-cols-[repeat(auto-fit,230px)] grid-flow-col gap-4 overflow-x-auto transition-all scroll-smooth"
         >
           {listData.map((movie: any) => (
             <Card key={movie.id} id={movie.id} data={movie} />

@@ -17,7 +17,7 @@ function App() {
     // fetch data from the API and display it in the app
     const fetchTrendingMovies = async () => {
       const response = await apiClient.get("/trending/movie/week");
-      console.log(response.data);
+      // console.log(response.data);
       dispatch(setBannerData(response.data.results));
     };
     fetchTrendingMovies();

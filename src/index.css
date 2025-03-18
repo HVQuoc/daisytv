@@ -21,3 +21,7 @@ body {
 .carousel-container::-webkit-scrollbar-thumb:hover {
   background: #666;
 }
+
+.home-banner::-webkit-scrollbar {
+  display: none;
+}

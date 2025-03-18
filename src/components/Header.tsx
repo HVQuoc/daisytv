@@ -5,8 +5,8 @@ import { PiTelevisionFill } from "react-icons/pi";
 import { BiSolidMoviePlay } from "react-icons/bi";
 import { MdHomeFilled } from "react-icons/md";
 export const navigation = [
-  { label: "TV Shows", href: "/tv", icon:  <PiTelevisionFill />},
-  { label: "Movies", href: "/movies", icon: <BiSolidMoviePlay />},
+  { label: "TV Shows", href: "/tv", icon: <PiTelevisionFill /> },
+  { label: "Movies", href: "/movie", icon: <BiSolidMoviePlay /> },
 ];
 export const mobileNavigation = [
   {
@@ -21,7 +21,7 @@ export const mobileNavigation = [
     icon: <IoSearchOutline />,
   },
 ];
-const Header = () => {  
+const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
 
@@ -31,16 +31,16 @@ const Header = () => {
       navigate(`/search?q=${searchInput}`);
     }
   };
- 
+
   return (
-    <header className="fixed py-2 w-full h-16 bg-gray-600 text-neutral-200 opacity-65 z-10">
+    <header className="absolute top-0 py-2 w-full h-16 bg-gradient-to-b from-gray-600 to-transparent text-neutral-200 opacity-75 hover:opacity-100 z-10">
       <div className="container mx-auto px-4 flex items-center h-full w-full">
         {/* Logo */}
         <Link to="/">
           <span className="text-4xl text-orange-600 font-bold">D</span>
           <span className="text-2xl text-orange-600 font-bold">aisyTV</span>
         </Link>
-        <nav className="hidden lg:flex items-center gap-2 ml-4">
+        <nav className="hidden lg:flex items-center gap-2 ml-4 font-bold">
           {navigation.map((item) => (
             <NavLink
               key={item.href}
@@ -55,8 +55,8 @@ const Header = () => {
         </nav>
 
         {/* Search div */}
-        <form 
-          className="hidden lg:flex border w-md border-gray-500  items-center mx-auto px-2 rounded-lg"
+        <form
+          className="hidden lg:flex border w-md border-gray-400  items-center mx-auto px-2 rounded-lg"
           onSubmit={handleSubmit}
         >
           <input

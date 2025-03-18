@@ -11,16 +11,16 @@ const Footer = () => {
         </div>
 
         <div className="flex space-x-6 text-md my-4">
-          <a href="#" className="hover:text-white">
+          <a href="#" className="hover:text-orange-400">
             Home
           </a>
-          <a href="#" className="hover:text-white">
-            Top Rated
+          <a href="#moviecollections" className="hover:text-orange-400">
+            Movies collections
           </a>
-          <a href="#" className="hover:text-white">
-            Upcoming
+          <a href="#exploretvshows" className="hover:text-orange-400">
+            Explore TV shows
           </a>
-          <a href="#" className="hover:text-white">
+          <a href="#" className="hover:text-orange-400">
             Contact
           </a>
         </div>
@@ -45,7 +45,7 @@ const Footer = () => {
       </div>
       {/* Copyright */}
       <div className="text-center text-sm text-gray-500 mt-4">
-        &copy; {new Date().getFullYear()} MovieFinder. All rights reserved.
+        &copy; {new Date().getFullYear()} DaisyTV. All rights reserved.
       </div>
     </footer>
   );
