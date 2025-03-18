@@ -34,13 +34,13 @@ const Home = () => {
         <h2 id="moviecollections" className="scroll-mt-18 bg-gradient-to-b from-gray-500 to-transparent h-20 p-4 flex items-center justify-center text-4xl font-bold">
           Movie Collections
         </h2>
-        <HorizontalCardScroller listData={bannerData} heading={"Trending"} />
-        <HorizontalCardScroller listData={popularMovies} heading={"Popular"} />
-        <HorizontalCardScroller
+        <HorizontalCardScroller media_type="movie" listData={bannerData} heading={"Trending"} />
+        <HorizontalCardScroller media_type="movie" listData={popularMovies} heading={"Popular"} />
+        <HorizontalCardScroller media_type="movie"
           listData={upComingMovies}
           heading={"Upcoming"}
         />
-        <HorizontalCardScroller
+        <HorizontalCardScroller media_type="movie"
           listData={topRatedMovies}
           heading={"Top Rated"}
         />
@@ -54,12 +54,12 @@ const Home = () => {
         <h2 id="exploretvshows" className="scroll-mt-18 bg-gradient-to-b from-gray-500 to-transparent h-20 p-4 flex items-center justify-center text-4xl font-bold">
           Explore TV Shows
         </h2>
-        <HorizontalCardScroller
+        <HorizontalCardScroller media_type="tv"
           listData={airingTodayTVs}
           heading={"Airing Today"}
         />
-        <HorizontalCardScroller listData={popularTVs} heading={"Popular"} />
-        <HorizontalCardScroller listData={topRatedTVs} heading={"Top Rated"} />
+        <HorizontalCardScroller media_type="tv" listData={popularTVs} heading={"Popular"} />
+        <HorizontalCardScroller media_type="tv" listData={topRatedTVs} heading={"Top Rated"} />
         <div className="mt-2 bg-gradient-to-t from-gray-500 to-transparent h-20 p-4"></div>
         <hr className="text-gray-300" />
       </div>

@@ -4,8 +4,8 @@ import apiClient from '../api/tmdbApi';
 interface FetchProps {
     endpoint: string
 }
-const useFetch = ({endpoint}: FetchProps) => {
-    const [data, setData] = React.useState<any[]>();
+const useFetchDetails = ({endpoint}: FetchProps) => {
+    const [data, setData] = React.useState<any>();
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState<string>("");
     useEffect(() => {
@@ -13,7 +13,7 @@ const useFetch = ({endpoint}: FetchProps) => {
             try {
                 setIsLoading(true);
                 const response = await apiClient.get(endpoint);
-                setData(response.data.results);
+                setData(response.data);
             } catch (err: any) {
                 setError(err?.response?.data?.message || err.message || "Something went wrong");
             } finally {
@@ -26,4 +26,4 @@ const useFetch = ({endpoint}: FetchProps) => {
   return {data, isLoading, error};
 }
 
-export default useFetch;
+export default useFetchDetails;

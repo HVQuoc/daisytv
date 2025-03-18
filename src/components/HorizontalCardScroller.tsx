@@ -5,11 +5,13 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 interface HorizontalCardScrollerProps {
   listData: any[];
   heading: string;
+  media_type: string;
 }
 
 const HorizontalCardScroller = ({
   listData,
   heading,
+  media_type
 }: HorizontalCardScrollerProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const handeNextBtn = () => {
@@ -39,7 +41,7 @@ const HorizontalCardScroller = ({
           className="carousel-container grid py-2 grid-cols-[repeat(auto-fit,230px)] grid-flow-col gap-4 overflow-x-auto transition-all scroll-smooth"
         >
           {listData.map((movie: any) => (
-            <Card key={movie.id} id={movie.id} data={movie} />
+            <Card media_type={media_type} key={movie.id} id={movie.id} data={movie} />
           ))}
         </div>
 

@@ -27,9 +27,8 @@ function App() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/:explore" element={<Explore />}>
-          <Route path=":id" element={<Details />} />
-        </Route>
+        <Route path="/:explore" element={<Explore />} />
+        <Route path="/:explore/:id" element={<Details />} />
       </Route>
     </Routes>
   );

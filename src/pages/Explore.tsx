@@ -13,7 +13,7 @@ const Explore = () => {
     try {
       setIsLoading(true);
       const path = `/discover/${explore}?page=${pageNo}`;
-      console.log("fetching data", path);
+      // console.log("fetching data", path);
       const res = await apiClient.get(path);
       // console.log(res.data.results);
       setData((prev) => [...prev, ...res.data.results]);
@@ -66,7 +66,7 @@ const Explore = () => {
         <div className="grid grid-cols-[repeat(auto-fit,230px)] gap-5">
           {data?.length > 0 &&
             data.map((item: any) => (
-              <Card id={item.id} data={item} />
+              <Card media_type={explore || "movie"} id={item.id} data={item} />
               // <div key={item.id + "explore"} className="w-1/4 md:w-1/5 lg:w-1/6">
               //   <img src={`${import.meta.env.VITE_IMG_PATH}${item.poster_path}`} alt={item.title + "image"} />
               // </div>

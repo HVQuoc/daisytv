@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 export interface CardProps {
   id: string;
   data: any;
+  media_type: string;
 }
 
 const Card: React.FC<CardProps> = (CardProps) => {
   return (
     <div className="relative h-86 w-[230px] overflow-hidden rounded-lg hover:scale-105 transition-all">
-      <Link to={"/movie/" + CardProps.data.id}>
+      <Link to={"/" + CardProps.media_type + "/" + CardProps.data.id}>
         <img
           src={`${import.meta.env.VITE_IMG_PATH}${CardProps.data.poster_path}`}
           className="w-full object-cover h-full"
