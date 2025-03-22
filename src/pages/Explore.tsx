@@ -7,7 +7,7 @@ import Card from "../components/Card";
 const Explore = () => {
   const [data, setData] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [pageNo, setPageNo] = useState(1);
+  const [pageNo, setPageNo] = useState(0);
   const { explore } = useParams();
 
   const fetchData = async () => {
@@ -64,14 +64,20 @@ const Explore = () => {
         <h3 className="capitalize text-lg lg:text-xl font-semibold my-4">
           Explore {explore} shows
         </h3>
-        <div className="grid grid-cols-[repeat(auto-fit,230px)] gap-5">
-          {data?.length > 0 &&
-            data.map((item: any) => (
-              <Card media_type={explore || "movie"} id={item.id} data={item} />
-              // <div key={item.id + "explore"} className="w-1/4 md:w-1/5 lg:w-1/6">
-              //   <img src={`${import.meta.env.VITE_IMG_PATH}${item.poster_path}`} alt={item.title + "image"} />
-              // </div>
-            ))}
+        <div className="flex justify-center md:justify-start">
+          <div className="grid grid-cols-1 max-w-full md:grid-cols-[repeat(auto-fit,230px)] gap-5">
+            {data?.length > 0 &&
+              data.map((item: any) => (
+                <Card
+                  media_type={explore || "movie"}
+                  id={item.id}
+                  data={item}
+                />
+                // <div key={item.id + "explore"} className="w-1/4 md:w-1/5 lg:w-1/6">
+                //   <img src={`${import.meta.env.VITE_IMG_PATH}${item.poster_path}`} alt={item.title + "image"} />
+                // </div>
+              ))}
+          </div>
         </div>
       </div>
       {isLoading && (

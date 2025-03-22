@@ -26,7 +26,7 @@ const Search = () => {
       const mediaData = response.data.results.filter(
         (item: any) => item.media_type === "movie" || item.media_type === "tv"
       );
-      console.log("media data", mediaData);
+      // console.log("media data", mediaData);
       setData(mediaData);
     } catch (err) {
       console.log("search page", err);
@@ -37,7 +37,7 @@ const Search = () => {
 
   const handleSearch = (e: FormEvent) => {
     e.preventDefault();
-    console.log("handle search", searchTerm);
+    // console.log("handle search", searchTerm);
     if (searchTerm === "") return;
     fetchData(searchTerm);
   };

@@ -8,12 +8,12 @@ const HomeBanner = () => {
   const bannerData = useSelector((state: RootState) => state.app.bannerData);
 
   const handleNextMovie = () => {
-    console.log("next movie", currentMovie);
+    // console.log("next movie", currentMovie);
     setCurrentMovie((prev) => (prev === bannerData.length - 1 ? 0 : prev + 1));
   };
 
   const handlePrevMovie = () => {
-    console.log("prev movie");
+    // console.log("prev movie");
     setCurrentMovie((prev) => (prev === 0 ? bannerData.length - 1 : prev - 1));
   };
 

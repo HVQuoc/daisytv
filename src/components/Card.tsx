@@ -13,7 +13,7 @@ const Card: React.FC<CardProps> = (CardProps) => {
   const imagePath = import.meta.env.VITE_IMG_PATH;
   return (
     <motion.div
-      className="relative h-86 w-[230px] overflow-hidden rounded-lg"
+      className="relative h-86 max-w-[230px] overflow-hidden rounded-lg"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
     >

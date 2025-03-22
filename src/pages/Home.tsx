@@ -6,7 +6,7 @@ import HorizontalCardScroller from "../components/HorizontalCardScroller";
 import useFetch from "../hooks/useFetch";
 
 const Home = () => {
-  console.log("Home page", window.innerWidth);
+  // console.log("Home page", window.innerWidth);
   const bannerData = useSelector((state: RootState) => state.app.bannerData);
   const { data: popularMovies = [] } = useFetch({
     endpoint: "/movie/popular",

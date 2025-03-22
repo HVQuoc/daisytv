@@ -12,7 +12,7 @@ const Details = () => {
   const { data } = useFetchDetails({
     endpoint: `/${params.explore}/${params.id}`,
   });
-  console.log("data", data);
+  // console.log("data", data);
   const { data: castData } = useFetchDetails({
     endpoint: `/${params.explore}/${params.id}/credits`,
   });
