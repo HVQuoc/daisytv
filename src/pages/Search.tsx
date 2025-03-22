@@ -1,6 +1,7 @@
 import { useState, FormEvent, useEffect } from "react";
-import apiClient from "../api/tmdbApi";
+import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import apiClient from "../api/tmdbApi";
 import Card from "../components/Card";
 
 const Search = () => {
@@ -12,18 +13,25 @@ const Search = () => {
   const [nameSort, setNameSort] = useState<"asc" | "desc">("asc");
   const [scoreSort, setScoreSort] = useState<"asc" | "desc">("desc");
   const [data, setData] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchData = async (searchQuery: string) => {
     try {
+      setIsLoading(true);
       // console.log(location.search.split("=")[1])
       // const searchQuery = location?.search?.split("=")[1] || "";
       const response = await apiClient.get(
-        `/search/collection?query=${searchQuery}&page=1`
+        `/search/multi?query=${searchQuery}&page=1`
       );
-      console.log("search page", response.data.results);
-      setData(response.data.results);
+      const mediaData = response.data.results.filter(
+        (item: any) => item.media_type === "movie" || item.media_type === "tv"
+      );
+      console.log("media data", mediaData);
+      setData(mediaData);
     } catch (err) {
       console.log("search page", err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -45,6 +53,22 @@ const Search = () => {
       fetchData(searchTermFromPath);
     }
   }, [location]);
+
+  // Apply filters and sorting before rendering
+  const filteredAndSortedData = data
+    .filter((item) => !enableFilter || item.vote_average >= score) // Filtering
+    .sort((a, b) => {
+      if (!enableSorting) return 0;
+      if (nameSort === "asc") return a.title?.localeCompare(b.title);
+      if (nameSort === "desc") return b.title?.localeCompare(a.title);
+      return 0;
+    })
+    .sort((a, b) => {
+      if (!enableSorting) return 0;
+      if (scoreSort === "asc") return a.vote_average - b.vote_average;
+      if (scoreSort === "desc") return b.vote_average - a.vote_average;
+      return 0;
+    });
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 py-20 mx-auto container px-4">
@@ -75,7 +99,9 @@ const Search = () => {
             >
               Filters
             </button>
-            <span className="px-2 text-gray-500">{enableFilter ? "On" : "Off"}</span>
+            <span className="px-2 text-gray-500">
+              {enableFilter ? "On" : "Off"}
+            </span>
           </div>
           {enableFilter && (
             <div>
@@ -114,7 +140,9 @@ const Search = () => {
             >
               Sorting
             </button>
-            <span className="px-2 text-gray-500">{enableSorting ? "On" : "Off"}</span>
+            <span className="px-2 text-gray-500">
+              {enableSorting ? "On" : "Off"}
+            </span>
           </div>
           {enableSorting && (
             <div className="flex gap-4">
@@ -156,18 +184,54 @@ const Search = () => {
 
       {/* right panel */}
       <div className="col-span-3">
+        {filteredAndSortedData.length > 0 && (
+          <h2 className="font-semibold mb-2">
+            {filteredAndSortedData.length} results
+          </h2>
+        )}
+        <div className="flex justify-center w-full">
+          {/* <div className="flex flex-wrap gap-4"> */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {filteredAndSortedData?.length > 0 &&
+              filteredAndSortedData.map((item: any) => (
+                <Card
+                  media_type={item.media_type || "movie"}
+                  key={item.id}
+                  id={item.id}
+                  data={item}
+                />
+              ))}
+          </div>
+        </div>
+
         {data.length === 0 && (
           <p className="font-semibold text-md">
             No item to display. Try typing some keyword.
           </p>
         )}
-        {/* <div className="grid grid-cols-[repeat(auto-fit,230px)] gap-5"> */}
-        <div className="flex flex-wrap gap-5">
-          {data?.length > 0 &&
-            data.map((item: any) => (
-              <Card key={item.id} id={item.id} data={item} />
-            ))}
-        </div>
+
+        {isLoading && (
+          <motion.div
+            className="flex w-full items-center justify-center py-4 my-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.p
+              className="text-2xl"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "reverse",
+                duration: 0.5,
+              }}
+            >
+              Loading...
+            </motion.p>
+          </motion.div>
+        )}
       </div>
     </div>
   );

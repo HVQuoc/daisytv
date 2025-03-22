@@ -28,7 +28,7 @@ const CircleScore: React.FC<CircleScoreProps> = ({ score }) => {
           cx="50"
           cy="50"
           r={radius}
-          stroke="green"
+          stroke={score > 50 ? score > 70? "green": "orange" : "red"}
           strokeWidth={strokeWidth}
           fill="none"
           strokeDasharray={circumference}
@@ -40,7 +40,9 @@ const CircleScore: React.FC<CircleScoreProps> = ({ score }) => {
         {/* Score Text */}
         <text x="50" y="55" textAnchor="middle" fill="green">
           <tspan fontSize="16" fontWeight="bold">{integerPart}</tspan>
-          <tspan fontSize="10">.{decimalPart}</tspan>
+          {decimalPart !== "00" && (
+            <tspan fontSize="10">.{decimalPart}</tspan>
+          )}
           <tspan fontSize="10" fontWeight="bold">%</tspan>
         </text>
       </svg>

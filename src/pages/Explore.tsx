@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import apiClient from "../api/tmdbApi";
 import Card from "../components/Card";
@@ -48,8 +49,8 @@ const Explore = () => {
   // fetch when page renders
   useEffect(() => {
     // reset the state
-    setData([])
-    setPageNo(1)  
+    setData([]);
+    setPageNo(1);
     fetchData();
   }, [explore]);
 
@@ -74,9 +75,26 @@ const Explore = () => {
         </div>
       </div>
       {isLoading && (
-        <div className="flex w-full items-center justify-center py-4 my-4">
-          <p className="text-2xl">Loading...</p>
-        </div>
+        <motion.div
+          className="flex w-full items-center justify-center py-4 my-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.p
+            className="text-2xl"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "reverse",
+              duration: 0.5,
+            }}
+          >
+            Loading...
+          </motion.p>
+        </motion.div>
       )}
     </div>
   );
